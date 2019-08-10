@@ -94,6 +94,9 @@
     <EmbeddedResource Include="CASE2.resx">
       <DependentUpon>CASE2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CASE3.resx">
+      <DependentUpon>CASE3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

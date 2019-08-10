@@ -25,6 +25,7 @@ namespace FLAME_TEST
         List<MasterSalePerson> masterSalePerson;
         List<TransactionsSaleHeader> transHD;
             List<TransactionsSaleDetail> transDT;
+        ReportDocument report;
         public CASE1()
         {
             InitializeComponent();
@@ -34,6 +35,9 @@ namespace FLAME_TEST
             masterSalePersonPath = (System.Windows.Forms.Application.StartupPath + @"\ExcelData\MasterSalePerson.xlsx");
             transactionsSaleDetailPath = (System.Windows.Forms.Application.StartupPath + @"\ExcelData\TransactionsSaleDetail.xlsx");
             transactionsSaleHeaderPath = (System.Windows.Forms.Application.StartupPath + @"\ExcelData\TransactionsSaleHeader.xlsx");
+
+            report = new ReportDocument();
+            report.Load(@"C:\Users\JaoJao\source\repos\FLAME_TEST\FLAME_TEST\Reports\CrystalReportCASE1.rpt");
         }
 
         private void CASE1_Load(object sender, EventArgs e)
@@ -59,7 +63,6 @@ namespace FLAME_TEST
             cbProCatData.AddRange(masterProductCategories);
             cbCusData.AddRange(masterCustomers);
             cbSalePersonData.AddRange(masterSalePerson); 
-
             //set combobox data   
             cbProductCate.DataSource = cbProCatData;
             cbProductCate.DisplayMember = "categoryName";
@@ -78,9 +81,7 @@ namespace FLAME_TEST
         }
 
         private void reloadReport()
-        {
-            var report = new ReportDocument();
-            report.Load(@"C:\Users\JaoJao\source\repos\FLAME_TEST\FLAME_TEST\Reports\CrystalReportCASE1.rpt"); 
+        { 
             report.SetDataSource(createReportData());
             crystalReportViewer1.ReportSource = report;
 
@@ -92,28 +93,28 @@ namespace FLAME_TEST
         private List<ReportSale> createReportData()
         {
             List<ReportSale> reportData = (from hd in transHD
-             join dt in transDT on hd.docno equals dt.docno
-             join pro in masterProducts on dt.produCode equals pro.productCode
-             join cus in masterCustomers on hd.customerCode equals cus.customerCode
-             join salP in masterSalePerson on hd.salePersonCode equals salP.salePersonCode
-             join proCat in masterProductCategories on pro.categoryCode equals proCat.categoryCode
-             where hd.saleDate  >= dpDateFrom.Value.Date &&  hd.saleDate  <= dpDateTo.Value.Date && 
-             cus.customerCode.Contains( cbCustomer.SelectedValue.ToString()) &&
-             proCat.categoryCode.Contains(cbProductCate.SelectedValue.ToString()) &&
-             salP.salePersonCode.Contains(cbSalePerson.SelectedValue.ToString()) 
-             select new ReportSale
-             {
-                 docno = hd.docno,
-                 customerCode = cus.customerCode,
-                 customerName = cus.customerName,
-                 saleDate = hd.saleDate,
-                 productName = pro.productName,
-                 salePrice = pro.salePrice,
-                 salePersonCode = salP.salePersonCode,
-                 salePersonName = salP.salePersonName,
-                 productCode = pro.productCode
+                                           join dt in transDT on hd.docno equals dt.docno
+                                           join pro in masterProducts on dt.produCode equals pro.productCode
+                                           join cus in masterCustomers on hd.customerCode equals cus.customerCode
+                                           join salP in masterSalePerson on hd.salePersonCode equals salP.salePersonCode
+                                           join proCat in masterProductCategories on pro.categoryCode equals proCat.categoryCode
+                                           where hd.saleDate >= dpDateFrom.Value.Date && hd.saleDate <= dpDateTo.Value.Date &&
+                                           cus.customerCode.Contains(cbCustomer.SelectedValue.ToString()) &&
+                                           proCat.categoryCode.Contains(cbProductCate.SelectedValue.ToString()) &&
+                                           salP.salePersonCode.Contains(cbSalePerson.SelectedValue.ToString())
+                                           select new ReportSale
+                                           {
+                                               docno = hd.docno,
+                                               customerCode = cus.customerCode,
+                                               customerName = cus.customerName,
+                                               saleDate = hd.saleDate,
+                                               productName = pro.productName,
+                                               salePrice = pro.salePrice,
+                                               salePersonCode = salP.salePersonCode,
+                                               salePersonName = salP.salePersonName,
+                                               productCode = pro.productCode
 
-             }).ToList();
+                                           }).ToList();
             return reportData;
         }
 
@@ -124,10 +125,8 @@ namespace FLAME_TEST
             Excel.Application xlApp;
             Workbook xlWorkBook;
             Worksheet xlWorkSheet;
-            Range range;
-            int rCnt;
-            int rw = 0;
-            int cl = 0;
+            Range range; 
+            int rw = 0; 
 
             xlApp = new Excel.Application();
             //open the excel
@@ -167,10 +166,8 @@ namespace FLAME_TEST
             Excel.Application xlApp;
             Workbook xlWorkBook;
             Worksheet xlWorkSheet;
-            Range range;
-            int rCnt;
-            int rw = 0;
-            int cl = 0;
+            Range range; 
+            int rw = 0; 
 
             xlApp = new Excel.Application();
             //open the excel

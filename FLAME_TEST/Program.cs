@@ -16,7 +16,7 @@ namespace FLAME_TEST
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CASE1());
+            Application.Run(new CASE3());
         }
     }
 }
