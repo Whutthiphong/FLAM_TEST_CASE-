@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="DataClasses2DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="MasterProducts">
+    <Type Name="MasterProducts">
+      <Column Name="productCode" Type="System.String" CanBeNull="false" />
+      <Column Name="productName" Type="System.String" CanBeNull="false" />
+      <Column Name="salePrice" Type="System.Double" CanBeNull="false" />
+      <Column Name="categoryCode" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TransactionsSaleHeaders">
+    <Type Name="TransactionsSaleHeader">
+      <Column Name="docno" Type="System.String" CanBeNull="false" />
+      <Column Name="saleDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="customerCode" Type="System.String" CanBeNull="false" />
+      <Column Name="salePersonCode" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="MasterCustomers">
+    <Type Name="MasterCustomer">
+      <Column Name="customerCode" Type="System.String" CanBeNull="false" />
+      <Column Name="customerName" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="MasterSalePersons">
+    <Type Name="MasterSalePerson">
+      <Column Name="salePersonCode" Type="System.String" CanBeNull="false" />
+      <Column Name="salePersonName" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="MasterProductCategories">
+    <Type Name="MasterProductCategory">
+      <Column Name="categoryCode" Type="System.String" CanBeNull="false" />
+      <Column Name="categoryName" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="TransactionsSaleDetails">
+    <Type Name="TransactionsSaleDetail">
+      <Column Name="" Member="docno" Type="System.String" CanBeNull="false" />
+      <Column Name="produCode" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="ReportSales">
+    <Type Name="ReportSale">
+      <Column Name="docno" Type="System.String" CanBeNull="false" />
+      <Column Name="saleDate" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="customerCode" Type="System.String" CanBeNull="false" />
+      <Column Name="salePersonCode" Type="System.String" CanBeNull="false" />
+      <Column Name="salePrice" Type="System.Double" CanBeNull="false" />
+      <Column Name="productName" Type="System.String" CanBeNull="false" />
+      <Column Name="customerName" Type="System.String" CanBeNull="false" />
+      <Column Name="salePersonName" Type="System.String" CanBeNull="false" />
+      <Column Name="productCode" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
